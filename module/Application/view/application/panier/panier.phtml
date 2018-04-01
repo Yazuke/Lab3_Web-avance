@@ -1,0 +1,25 @@
+<header>
+</header>
+
+<main>
+    <table class="datatable">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>idUser</th>
+            <th>idProduct</th>
+            <th>quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($panier as $pa) : ?>
+            <tr>
+                <td><?= $this->escapeHtml($pa->_id) ?></td>
+                <td><?= $this->escapeHtml($pa->_idUser) ?></td>
+                <td><?= $this->escapeHtml($pa->_idProduct) ?></td>
+                <td><?= $this->escapeHtml($pa->_quantity) ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</main>

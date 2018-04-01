@@ -61,6 +61,11 @@ class NavManager
                     ],
                 ]
             ];
+            $items[] = [
+                'id' => 'panier',
+                'label' => 'panier',
+                'link'=>$url('panier')
+            ];
         }
 
         return $items;

@@ -84,12 +84,24 @@ return [
                     ],
                 ],
             ],
+            'panier' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/panier',
+                    'defaults' => [
+                        'controller'    => Controller\PanierController::class,
+                        'action'        => 'panier',
+                    ],
+                ],
+            ],
         ],
     ],
     'service_manager' => [
         'factories' => [
             Services\ProductTable::class => Services\Factories\ProductTableFactory::class,
             Services\ProductTableGateway::class => Services\Factories\ProductTableGatewayFactory::class,
+            Services\PanierTable::class => Services\Factories\PanierTableFactory::class,
+            Services\PanierTableGateway::class => Services\Factories\PanierTableGatewayFactory::class,
             Services\NavManager::class => Services\Factories\NavManagerFactory::class,
         ],
     ],
@@ -97,6 +109,7 @@ return [
         'factories' => [
             Controller\IndexController::class => Controller\Factories\IndexControllerFactory::class,
             Controller\ProduitsController::class => Controller\Factories\ProduitsControllerFactory::class,
+            Controller\PanierController::class => Controller\Factories\PanierControllerFactory::class,
             Controller\AdministrationController::class => Controller\Factories\AdministrationControllerFactory::class,
         ],
     ],

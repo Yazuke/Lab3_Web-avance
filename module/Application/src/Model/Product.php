@@ -12,8 +12,6 @@ class Product {
 
     }
 
-
-
     public function exchangeArray($data) {
         $this->_id = (!empty($data['id'])) ? $data['id'] : null;
         $this->_name = (!empty($data['name'])) ? $data['name'] : null;
