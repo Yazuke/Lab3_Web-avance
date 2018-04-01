@@ -1,0 +1,26 @@
+<header>
+</header>
+Index
+<main>
+    <table class="datatable">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($products as $p) : ?>
+            <tr>
+                <td>
+                    <a href="./produits/<?= $this->escapeHtml($p->_id)?>"><?= $this->escapeHtml($p->_name) ?></a>
+                </td>
+                <td><?= $this->escapeHtml($p->_description) ?></td>
+                <td><?= $this->escapeHtml($p->_price) ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</main>

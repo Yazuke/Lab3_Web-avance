@@ -1,0 +1,65 @@
+<header>
+</header>
+Administration
+<main>
+    <table class="datatable">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Prix</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($products as $p) : ?>
+            <tr>
+                <td>
+                    <a href="/web/public/produits/<?= $this->escapeHtml($p->_id)?>"><?= $this->escapeHtml($p->_name) ?></a>
+                </td>
+                <td><?= $this->escapeHtml($p->_description) ?></td>
+                <td><?= $this->escapeHtml($p->_price) ?></td>
+                <td>
+                    <!-- Rempli le formulaire d'édition grâce à une fonction JS -->
+                    <a href="#formEdition" onclick="fillEdit(<?php echo $this->escapeHtml($p->_id)?>,'<?= $this->escapeHtml($p->_name)?>','<?= $this->escapeHtml($p->_description)?>','<?= $this->escapeHtml($p->_price)?>')">
+                        Editer
+                    </a>
+                </td>
+                <td>
+                    <a href="/web/public/administration/suppression-<?=$this->escapeHtml($p->_id)?>">Supprimer</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+    <br>
+    <form action="administration/ajout" method="post">
+        <input name="name" placeholder="Nom"/>
+        <input name="description" placeholder="Description"/>
+        <input name="price" placeholder="Prix"/>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <form id="formEdition" action="administration/edition" method="post">
+        <input id="formEditionId" name="id" type="hidden"/>
+        <input id="formEditionName" name="name" placeholder="Nom"/>
+        <input id="formEditionDescription" name="description" placeholder="Description"/>
+        <input id="formEditionPrice" name="price" placeholder="Prix"/>
+        <button type="submit">Editer</button>
+    </form>
+</main>
+
+
+<script>
+    //Rempli le formulaire grace à la fonction appellée au clic sur l'édition
+    function fillEdit(id,name,description,price){
+        console.log("hey");
+        document.getElementById("formEditionId").value =id;
+        document.getElementById("formEditionName").value =name;
+        document.getElementById("formEditionDescription").value =description;
+        document.getElementById("formEditionPrice").value =price;
+    }
+</script>
