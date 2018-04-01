@@ -90,6 +90,7 @@ return [
         'factories' => [
             Services\ProductTable::class => Services\Factories\ProductTableFactory::class,
             Services\ProductTableGateway::class => Services\Factories\ProductTableGatewayFactory::class,
+            Services\NavManager::class => Services\Factories\NavManagerFactory::class,
         ],
     ],
     'controllers' => [
@@ -97,6 +98,14 @@ return [
             Controller\IndexController::class => Controller\Factories\IndexControllerFactory::class,
             Controller\ProduitsController::class => Controller\Factories\ProduitsControllerFactory::class,
             Controller\AdministrationController::class => Controller\Factories\AdministrationControllerFactory::class,
+        ],
+    ],
+    'view_helpers' => [
+        'factories' => [
+            View\Helper\Menu::class => View\Helper\Factory\MenuFactory::class,
+        ],
+        'aliases' => [
+            'mainMenu' => View\Helper\Menu::class
         ],
     ],
     'view_manager' => [
