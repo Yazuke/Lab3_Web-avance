@@ -5,4 +5,5 @@
     <span><?= $this->escapeHtml($product->_name)?></span><br>
     <span><?= $this->escapeHtml($product->_description)?></span><br>
     <span><?= $this->escapeHtml($product->_price)?></span><br>
+    <a href="/web/public/panier/ajout/<?=$this->escapeHtml($product->_id)?>">Ajouter au panier</a>
 </main>
