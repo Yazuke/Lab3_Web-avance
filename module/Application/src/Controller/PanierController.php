@@ -9,22 +9,34 @@ namespace Application\Controller;
 
 use Application\Model\Panier;
 use Application\Services\PanierTable;
+use Application\Services\ProductTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class PanierController extends AbstractActionController
 {
-    private $_table;
+    private $_panierTable;
+    private $_productTable;
 
-    public function __construct(PanierTable $table)
+    public function __construct(PanierTable $panierTable, ProductTable $productTable)
     {
-        $this->_table = $table;
+        $this->_panierTable = $panierTable;
+        $this->_productTable = $productTable;
     }
 
     public function panierAction()
     {
+        $index=0;
+
+        //Récupère les objets Product qui ont l'id récupéré dans Panier (permet d'afficher leur nom, prix etc)
+        foreach ($this->_panierTable->fetchByUserConnected() as $panier){
+            $produits[$index]=$this->_productTable->find($panier->_idProduct);
+            $index++;
+        }
+
         return new ViewModel([
-            'paniers' => $this->_table->fetchByUserConnected(),
+            'paniers' => $this->_panierTable->fetchByUserConnected(),
+            'produits'=> $produits
         ]);
     }
 }
