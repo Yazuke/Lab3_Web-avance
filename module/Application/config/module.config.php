@@ -54,7 +54,7 @@ return [
             'suppression' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/administration/suppression-:id',
+                    'route'    => '/administration/suppression/:id',
                     'constraints' => [
                         'id' => '[0-9]*',
                     ],
@@ -94,6 +94,19 @@ return [
                     ],
                 ],
             ],
+            'ajoutPanier' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/panier/ajout/:id',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\PanierController::class,
+                        'action'        => 'ajoutPanier',
+                    ],
+                ],
+            ],
         ],
     ],
     'service_manager' => [
@@ -121,6 +134,20 @@ return [
             'mainMenu' => View\Helper\Menu::class
         ],
     ],
+    'access_filter' => [
+        'options' => [
+            'mode' => 'restrictive'
+        ],
+        'controllers' => [
+            Controller\IndexController::class => [
+                ['actions' => ['index'], 'allow' => '*'],
+            ],
+            Controller\PanierController::class => [
+                ['actions' => ['panier'], 'allow' => '@'],
+            ],
+        ]
+    ],
+
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,

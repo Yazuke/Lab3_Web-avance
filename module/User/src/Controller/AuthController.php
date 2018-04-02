@@ -8,7 +8,6 @@ use Zend\View\Model\ViewModel;
 use User\Services\UserManager;
 use User\Services\AuthManager;
 use User\Form\LoginForm;
-use Zend\Uri\UriFactory;
 
 /**
  * Controleur d'authentification, gère le login et le logout
@@ -58,14 +57,6 @@ class AuthController extends AbstractActionController
 
                 if ($result->getCode() == Result::SUCCESS) {
                     $redirectUrl = $this->params()->fromPost('redirect_url', '');
-
-                    // Si l'URL est non vide on vérifie qu'elle est valide
-                    if (!empty($redirectUrl)) {
-                        $uri = Zend_Uri::factory($redirectUrl);
-                        if (!$uri->isValid() || $uri->getHost()!=null)
-                            throw new \Exception('Incorrect redirect URL: ' . $redirectUrl);
-                    }
-
 
                     if(empty($redirectUrl)) {
                         return $this->redirect()->toRoute('home');

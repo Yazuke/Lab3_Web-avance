@@ -39,5 +39,12 @@ class PanierController extends AbstractActionController
             'produits'=> $produits
         ]);
     }
+
+    public function ajoutPanierAction(){
+
+        $this->_panierTable->insert($this->params()->fromRoute('id'));
+
+        return $this->redirect()->toRoute('home');
+    }
 }
 

@@ -56,7 +56,7 @@ class Module implements ConfigProviderInterface
         $authManager = $event->getApplication()->getServiceManager()->get(AuthManager::class);
 
         // Pour chaque contrôleur on vérifie si l'accès est autorisé
-        // En evitant pour AuthController, cela causerait une boucle infini
+        // En evitant pour AuthController, cela causerait une boucle infinie
         if ($controllerName!=AuthController::class && !$authManager->filterAccess($controllerName, $actionName)) {
 
             // Récupération de l'URL que l'utilisateur voulait accéder

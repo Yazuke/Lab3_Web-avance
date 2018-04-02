@@ -37,12 +37,43 @@ class PanierTable {
         return $return;
     }
 
+    public function getUserConnected(){
+        return $this->userManager->findByUsername($this->authService->getIdentity())->_id;
+    }
 
-//
-//    public function insert($name,$description,$price){
-//        $tab=['name' => $name,'description' => $description,'price' => $price];
-//        $this->_tableGateway->insert($tab);
+
+
+    public function insert($idProduct){
+        //Récupère l'id de l'utilisateur connecté
+        $idUser=$this->getUserConnected();
+
+        //Teste si l'entrée existe déjà
+        $testExistence=$this->_tableGateway->select(['idUser' => $idUser,'idProduct'=>$idProduct]);
+
+        //Si une entrée existe déjà, on augmente la quantité du produit et on update
+        if($testExistence->count()>0){
+
+            foreach ($testExistence as $test){
+                $quantity=$test->_quantity+1;
+                $id=$test->_id;
+            }
+
+            $tab=['idUser' => $idUser,'idProduct' => $idProduct,'quantity'=>$quantity];
+            $this->_tableGateway->update($tab,['id'=>$id]);
+
+        //Sinon, on insere une nouvelle ligne avec une quantité de 1
+        }else{
+            $quantity=1;
+
+            $tab=['idUser' => $idUser,'idProduct' => $idProduct,'quantity'=>$quantity];
+            $this->_tableGateway->insert($tab);
+        }
+    }
+
+//    public function exists($idUser,$idProduct){
+//        return $resultSet=$this->_tableGateway->select(['idUser' => $idUser,'idProduct'=>$idProduct]);
 //    }
+
 //
 //    public function update($id,$name,$description,$price){
 //        //todo:vérification des champs

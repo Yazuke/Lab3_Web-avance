@@ -19,6 +19,9 @@ Index
                 </td>
                 <td><?= $this->escapeHtml($p->_description) ?></td>
                 <td><?= $this->escapeHtml($p->_price) ?></td>
+                <td>
+                    <a href="/web/public/panier/ajout/<?=$this->escapeHtml($p->_id)?>">Ajouter au panier</a>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
