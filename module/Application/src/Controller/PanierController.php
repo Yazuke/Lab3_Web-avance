@@ -34,10 +34,18 @@ class PanierController extends AbstractActionController
             $index++;
         }
 
-        return new ViewModel([
-            'paniers' => $this->_panierTable->fetchByUserConnected(),
-            'produits'=> $produits
-        ]);
+        //Si le panier a des éléments, on lui renvoie tout, sinon, on lui renvoie juste le nombre d'éléments (=0)
+        if($index>0){
+            return new ViewModel([
+                'paniers' => $this->_panierTable->fetchByUserConnected(),
+                'produits'=> $produits,
+                'indexMax'=> $index
+            ]);
+        }else{
+            return new ViewModel([
+                'indexMax'=> $index
+            ]);
+        }
     }
 
     public function ajoutPanierAction(){

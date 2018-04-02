@@ -2,39 +2,37 @@
 </header>
 
 <main>
-    <table class="datatable">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Description</th>
-            <th>Prix</th>
-            <th>Quantité</th>
-        </tr>
-        </thead>
-        <tbody>
+
             <?php
                 $index=0;
                 $sousTotal=0;
-                foreach ($paniers as $panier) :
-            ?>
-            <tr>
-                <td><a href="./produits/<?= $this->escapeHtml($produits[$index]->_id)?>"><?= $this->escapeHtml($produits[$index]->_name) ?></a></td>
-                <td><?= $this->escapeHtml($produits[$index]->_description) ?></td>
-                <td><?= $this->escapeHtml($produits[$index]->_price) ?></td>
-                <td><?= $this->escapeHtml($panier->_quantity) ?></td>
-            </tr>
 
-            <?php
-                $sousTotal+=$this->escapeHtml($produits[$index]->_price)*$panier->_quantity;
-                $index++;
-                endforeach;
-            ?>
-        </tbody>
-    </table>
-    <span style="color:red">Sous total Hors Taxes : <?=$sousTotal?> $CAN</span><br>
-    <?php
-        $taxes=$sousTotal*0.05;
-        $taxes+=$sousTotal*0.09975;
-    ?>
-    <span style="color:red">Sous total Avec Taxes: <?=number_format($sousTotal+$taxes, 2, '.', ',');?> $CAN</span>
+                if($indexMax>0){
+
+                    echo "<table class=\"datatable\">";
+                    echo "<thead><tr><th>Nom</th><th>Description</th><th>Prix</th><th>Quantité</th></tr></thead><tbody>";
+
+                    foreach ($paniers as $panier) :
+                        echo '<tr>';
+                        echo '<td><a href="./produits/'.$this->escapeHtml($produits[$index]->_id).'">'.$this->escapeHtml($produits[$index]->_name).'</a></td>';
+                        echo '<td>'.$this->escapeHtml($produits[$index]->_description).'</td>';
+                        echo '<td>'.$this->escapeHtml($produits[$index]->_price).'</td>';
+                        echo '<td>'.$this->escapeHtml($panier->_quantity).'</td>';
+                        echo '</tr>';
+
+                        $sousTotal+=$this->escapeHtml($produits[$index]->_price)*$panier->_quantity;
+                        $index++;
+
+                    endforeach;
+                 echo '</tbody>';
+                 echo '</table>';
+                 echo '<span style="color:red">Sous total Hors Taxes : '.$sousTotal.' $CAN</span><br>';
+                $taxes=$sousTotal*0.05;
+                $taxes+=$sousTotal*0.09975;
+
+                $sousTotalHT=number_format($sousTotal+$taxes, 2, '.', ',');
+                echo '<span style="color:red">Sous total Avec Taxes: '.$sousTotalHT.' $CAN</span>';
+                }else{echo "Panier vide";}
+                ?>
+
 </main>
