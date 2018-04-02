@@ -107,6 +107,16 @@ return [
                     ],
                 ],
             ],
+            'profil' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/profil',
+                    'defaults' => [
+                        'controller'    => Controller\ProfilController::class,
+                        'action'        => 'profil',
+                    ],
+                ],
+            ],
         ],
     ],
     'service_manager' => [
@@ -124,6 +134,7 @@ return [
             Controller\ProduitsController::class => Controller\Factories\ProduitsControllerFactory::class,
             Controller\PanierController::class => Controller\Factories\PanierControllerFactory::class,
             Controller\AdministrationController::class => Controller\Factories\AdministrationControllerFactory::class,
+            Controller\ProfilController::class => Controller\Factories\ProfilControllerFactory::class,
         ],
     ],
     'view_helpers' => [

@@ -52,18 +52,24 @@ class NavManager
 
             $items[] = [
                 'id' => 'logout',
-                'label' => $this->authService->getIdentity()." [".$id."] [".$privilege."]",
+                'label' => $this->authService->getIdentity()."[".$privilege."]",
                 'dropdown' => [
                     [
+                        'id' => 'profil',
+                        'label' => 'Profil',
+                        'link'=>$url('profil')
+                    ],
+                    [
                         'id' => 'logout',
-                        'label' => 'Sign out',
+                        'label' => 'Déconnexion',
                         'link' => $url('logout')
                     ],
+
                 ]
             ];
             $items[] = [
                 'id' => 'panier',
-                'label' => 'panier',
+                'label' => 'Panier',
                 'link'=>$url('panier')
             ];
         }
