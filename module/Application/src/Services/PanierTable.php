@@ -6,9 +6,15 @@ use Application\Model\Panier;
 
 class PanierTable {
     protected $_tableGateway;
+    private $authService;
+    private $userManager;
 
-    public function __construct(TableGatewayInterface $tableGateway){
+
+    public function __construct(TableGatewayInterface $tableGateway, $authService,$userManager){
         $this->_tableGateway = $tableGateway;
+        $this->authService = $authService;
+        $this->userManager = $userManager;
+
     }
 
     public function fetchAll() {
@@ -18,6 +24,20 @@ class PanierTable {
             $return[]=$r;
         return $return;
     }
+
+    public function fetchByUserConnected(){
+
+        //Récupère id de l'utilisateur connecté
+        $id=$this->userManager->findByUsername($this->authService->getIdentity())->_id;
+
+        $resultSet=$this->_tableGateway->select(['idUser' => $id]);
+        $return = array();
+        foreach( $resultSet as $r )
+            $return[]=$r;
+        return $return;
+    }
+
+
 //
 //    public function insert($name,$description,$price){
 //        $tab=['name' => $name,'description' => $description,'price' => $price];

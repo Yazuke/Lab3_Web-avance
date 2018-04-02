@@ -24,7 +24,7 @@ class PanierController extends AbstractActionController
     public function panierAction()
     {
         return new ViewModel([
-            'panier' => $this->_table->fetchAll(),
+            'paniers' => $this->_table->fetchByUserConnected(),
         ]);
     }
 }
