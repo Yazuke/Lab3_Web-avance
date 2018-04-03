@@ -2,6 +2,12 @@
 </header>
 
 <main>
-    <span>Profil de </span>
-    <span>Nom d'utilisateur : </span>
+    <span><strong>Nom d'utilisateur : </strong><?=$this->escapeHtml($username)?></span><br>
+    <span><strong>Adresse mail : </strong><?=$this->escapeHtml($mail)?></span><br>
+
+    <form action="/web/public/profil/changerMail" method="post">
+        <span><strong>Changer email</strong></span><input type="email" name="mail"/>
+        <button type="submit">Envoyer</button>
+    </form>
+
 </main>

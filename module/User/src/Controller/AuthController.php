@@ -27,33 +27,23 @@ class AuthController extends AbstractActionController
     }
 
     public function loginAction() {
-        // Récupération du paramètre redirectUrl
-        // permettant de rediriger l'utilisateur vers sa page de base
         $redirectUrl = (string)$this->params()->fromQuery('redirectUrl', '');
-        // Si la redirection fait plus de 2048 caractère refuser
         if (strlen($redirectUrl)>2048) {
             throw new \Exception("Too long redirectUrl argument passed");
         }
 
-        // Initialisation du formulaire de connexion
         $form = new LoginForm();
         $form->get('redirect_url')->setValue($redirectUrl);
 
         $isLoginError = false;
 
-        // Si c'est une requête POST
         if ($this->getRequest()->isPost()) {
 
-            // Récupère les données du body
             $data = $this->params()->fromPost();
-            // Set les données du formulaire
             $form->setData($data);
-            // Vérifie si le formulaire est valide
             if($form->isValid()) {
-                // Récupère les données du formulaire
                 $data = $form->getData();
-                // Appel le gestionnaire d'authentification pour se connecter
-                $result = $this->_authManager->login($data['username'], $data['password']);
+                $result = $this->_authManager->login($data['mail'], $data['password']);
 
                 if ($result->getCode() == Result::SUCCESS) {
                     $redirectUrl = $this->params()->fromPost('redirect_url', '');
@@ -71,7 +61,6 @@ class AuthController extends AbstractActionController
             }
         }
 
-        // Renvoie la vue
         return new ViewModel([
             'form' => $form,
             'isLoginError' => $isLoginError,
@@ -83,6 +72,53 @@ class AuthController extends AbstractActionController
         $this->_authManager->logout();
 
         return $this->redirect()->toRoute('login');
+    }
+
+    public function logoutChangementMailAction(){
+        $this->_authManager->logout();
+        return $this->redirect()->toRoute('login/changementMail');
+    }
+
+    public function loginChangementMailAction() {
+        $redirectUrl = (string)$this->params()->fromQuery('redirectUrl', '');
+        if (strlen($redirectUrl)>2048) {
+            throw new \Exception("Too long redirectUrl argument passed");
+        }
+
+        $form = new LoginForm();
+        $form->get('redirect_url')->setValue($redirectUrl);
+
+        $isLoginError = false;
+
+        if ($this->getRequest()->isPost()) {
+
+            $data = $this->params()->fromPost();
+            $form->setData($data);
+            if($form->isValid()) {
+                $data = $form->getData();
+                $result = $this->_authManager->login($data['mail'], $data['password']);
+
+                if ($result->getCode() == Result::SUCCESS) {
+                    $redirectUrl = $this->params()->fromPost('redirect_url', '');
+
+                    if(empty($redirectUrl)) {
+                        return $this->redirect()->toRoute('home');
+                    } else {
+                        $this->redirect()->toUrl($redirectUrl);
+                    }
+                } else {
+                    $isLoginError = true;
+                }
+            } else {
+                $isLoginError = true;
+            }
+        }
+
+        return new ViewModel([
+            'form' => $form,
+            'isLoginError' => $isLoginError,
+            'redirectUrl' => $redirectUrl
+        ]);
     }
 }
 

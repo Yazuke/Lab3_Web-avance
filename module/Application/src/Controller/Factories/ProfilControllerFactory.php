@@ -20,6 +20,8 @@ class ProfilControllerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container,
                              $requestedName, array $options = null)
     {
-        return new ProfilController();
+        $authService = $container->get(\Zend\Authentication\AuthenticationService::class);
+        $userManager = $container->get(\User\Services\UserManager::class);
+        return new ProfilController($authService,$userManager);
     }
 }

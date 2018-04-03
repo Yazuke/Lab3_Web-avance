@@ -26,8 +26,8 @@ class LoginForm extends Form
     protected function addElements()
     {
         $this->add([
-            'type'  => 'text',
-            'name' => 'username',
+            'type'  => 'email',
+            'name' => 'mail',
             'options' => [
                 'label' => 'Your E-mail',
             ],
@@ -72,9 +72,9 @@ class LoginForm extends Form
         $inputFilter = new InputFilter();
         $this->setInputFilter($inputFilter);
 
-        // Ajoute un filtre/vérification pour le username
+        // Ajoute un filtre/vérification pour le mail
         $inputFilter->add([
-            'name'     => 'username',
+            'name'     => 'mail',
             'required' => true,
             'filters'  => [
                 ['name' => 'StringTrim'],

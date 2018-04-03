@@ -117,6 +117,16 @@ return [
                     ],
                 ],
             ],
+            'changerMail' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/profil/changerMail',
+                    'defaults' => [
+                        'controller'    => Controller\ProfilController::class,
+                        'action'        => 'changerMail',
+                    ],
+                ],
+            ],
         ],
     ],
     'service_manager' => [

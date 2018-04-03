@@ -9,16 +9,17 @@ class NavManager
 {
 
     private $authService;
-    private $urlHelper;
     private $userManager;
+    private $urlHelper;
     private $userPrivilege;
     private $privilege;
 
     public function __construct($authService, $urlHelper, $userManager, $userPrivilege,$privilege)
     {
         $this->authService = $authService;
-        $this->urlHelper = $urlHelper;
         $this->userManager = $userManager;
+
+        $this->urlHelper = $urlHelper;
         $this->userPrivilege = $userPrivilege;
         $this->privilege = $privilege;
     }
@@ -42,7 +43,10 @@ class NavManager
         } else {
 
             //Récupère id de l'utilisateur connecté
-            $id=$this->userManager->findByUsername($this->authService->getIdentity())->_id;
+            $id=$this->userManager->findByMail($this->authService->getIdentity())->_id;
+
+            //Récupère le pseudo de l'utilisateur connecté
+            $username=$this->userManager->findByMail($this->authService->getIdentity())->_username;
 
             //Récupère l'id du privilege de l'utilisateur connecté
             $idPrivilege=$this->userPrivilege->findById($id)->_idPrivilege;
@@ -52,7 +56,7 @@ class NavManager
 
             $items[] = [
                 'id' => 'logout',
-                'label' => $this->authService->getIdentity()."[".$privilege."]",
+                'label' => $username."[".$privilege."]",
                 'dropdown' => [
                     [
                         'id' => 'profil',

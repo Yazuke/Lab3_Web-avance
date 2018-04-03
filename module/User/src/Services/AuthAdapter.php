@@ -9,6 +9,7 @@ use User\Services\UserManager;
 class AuthAdapter implements AdapterInterface
 {
     public $_username;
+    public $_mail;
     public $_password;
     public $_id;
 
@@ -23,7 +24,8 @@ class AuthAdapter implements AdapterInterface
 
     public function authenticate()
     {
-        $user = $this->_userManager->findByUsername($this->_username);
+//        $user = $this->_userManager->findByUsername($this->_username);
+        $user = $this->_userManager->findByMail($this->_mail);
 
         if ($user == null) {
             return new Result(
@@ -37,7 +39,7 @@ class AuthAdapter implements AdapterInterface
         if ($user->_password == $sentPass) {
             return new Result(
                 Result::SUCCESS,
-                $this->_username,
+                $this->_mail,
                 ['Authenticated successfully.']);
         }
 

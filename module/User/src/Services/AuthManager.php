@@ -21,14 +21,14 @@ class AuthManager
         $this->userPrivilegeTable = $userPrivilegeTable;
     }
 
-    public function login($username, $password)
+    public function login($mail, $password)
     {
         if ($this->authService->getIdentity()!=null) {
             throw new \Exception('Already logged in');
         }
 
         $authAdapter = $this->authService->getAdapter();
-        $authAdapter->_username = $username;
+        $authAdapter->_mail = $mail;
         $authAdapter->_password = $password;
 
         $result = $this->authService->authenticate();
@@ -89,6 +89,7 @@ class AuthManager
     }
 
     public function getPrivilege(){
+        //TODO
         $this->userPrivilege=$this->userPrivilegeTable->find(1)->getPrivilege();
         return $this->userPrivilege;
     }

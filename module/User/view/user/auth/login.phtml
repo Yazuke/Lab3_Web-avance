@@ -1,9 +1,9 @@
 <?php
 $this->headTitle('Sign in');
 
-$form->get('username')->setAttributes([
+$form->get('mail')->setAttributes([
     'class'=>'form-control',
-    'placeholder'=>'skiwa@skiwa.com',
+    'placeholder'=>'skiwa@mail.com',
     'required' => true,
     'autofocus' => true
 ])
@@ -30,8 +30,8 @@ $form->get('password')->setAttributes([
                     Incorrect login and/or password.
                 </div>
             <?php endif; ?>
-            <?= $this->formLabel($form->get('username')); ?>
-            <?= $this->formElement($form->get('username')); ?>
+            <?= $this->formLabel($form->get('mail')); ?>
+            <?= $this->formElement($form->get('mail')); ?>
             <?= $this->formLabel($form->get('password')); ?>
             <?= $this->formElement($form->get('password')); ?>
             <?= $this->formElement($form->get('redirect_url')); ?>

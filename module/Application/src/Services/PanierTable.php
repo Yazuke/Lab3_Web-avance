@@ -28,7 +28,7 @@ class PanierTable {
     public function fetchByUserConnected(){
 
         //Récupère id de l'utilisateur connecté
-        $id=$this->userManager->findByUsername($this->authService->getIdentity())->_id;
+        $id=$this->userManager->findByMail($this->authService->getIdentity())->_id;
 
         $resultSet=$this->_tableGateway->select(['idUser' => $id]);
         $return = array();
@@ -38,7 +38,7 @@ class PanierTable {
     }
 
     public function getUserConnected(){
-        return $this->userManager->findByUsername($this->authService->getIdentity())->_id;
+        return $this->userManager->findByMail($this->authService->getIdentity())->_id;
     }
 
 
