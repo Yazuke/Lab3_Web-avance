@@ -70,6 +70,28 @@ class PanierTable {
         }
     }
 
+    public function delete($idProduct){
+        //Récupère l'id de l'utilisateur connecté
+        $idUser=$this->getUserConnected();
+
+        foreach ($this->_tableGateway->select(['idProduct' => $idProduct,'idUser'=>$idUser]) as $panier){
+            $quantity=$panier->_quantity;
+            $id=$panier->_id;
+        }
+
+        if($quantity==1){
+            $this->_tableGateway->delete(['idProduct' => $idProduct]);
+        }else{
+            $tab=['idUser' => $idUser,'idProduct' => $idProduct,'quantity'=>$quantity-1];
+            $this->_tableGateway->update($tab,['id'=>$id]);
+        }
+    }
+
+
+
+
+
+
 //    public function exists($idUser,$idProduct){
 //        return $resultSet=$this->_tableGateway->select(['idUser' => $idUser,'idProduct'=>$idProduct]);
 //    }
@@ -81,9 +103,7 @@ class PanierTable {
 //        $this->_tableGateway->update($tab,['id' => $id]);
 //    }
 //
-//    public function delete($id){
-//        $this->_tableGateway->delete(['id' => $id]);
-//    }
+
 //
 //
 //    public function find($id){

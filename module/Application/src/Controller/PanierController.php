@@ -55,5 +55,11 @@ class PanierController extends AbstractActionController
         return $this->redirect()->toRoute('home');
     }
 
+    public function suppressionPanierAction(){
+
+        $this->_panierTable->delete($this->params()->fromRoute('id'));
+
+        return $this->redirect()->toRoute('panier');
+    }
 }
 

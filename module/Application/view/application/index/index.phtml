@@ -14,16 +14,16 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <img class="imageGrille" src="http://jhaegman.com/stool.svg">
+                        <a href="./produits/<?= $this->escapeHtml($p->_id)?>"><img class="imageGrille" src="http://jhaegman.com/stool.svg"></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-5 col-md-8 col-sm-8 col-8 voir_plus">
-                        <a href="./produits/<?= $this->escapeHtml($p->_id)?>" class="btn btn-outlined btn-block btn-primary">Voir
+                        <a href="./produits/<?= $this->escapeHtml($p->_id)?>" class="btn btn-default btn-block ">Voir
                             plus</a>
                     </div>
                     <div class="col-lg-4 col-md-2 col-sm-2 col-1">
-                        <a href="/web/public/panier/ajout/<?=$this->escapeHtml($p->_id)?>" class="ajout btn btn-default"><span style="display:block">Ajouter</span></a>
+                        <a href="/web/public/panier/ajout/<?=$this->escapeHtml($p->_id)?>" class="ajout btn btn-outlined btn-primary"><span style="display:block">Ajouter</span></a>
                     </div>
                 </div>
                 <hr>

@@ -117,6 +117,19 @@ return [
                     ],
                 ],
             ],
+            'suppressionPanier' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/panier/suppression/:id',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\PanierController::class,
+                        'action'        => 'suppressionPanier',
+                    ],
+                ],
+            ],
             'profil' => [
                 'type' => Segment::class,
                 'options' => [

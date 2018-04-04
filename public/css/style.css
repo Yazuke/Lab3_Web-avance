@@ -301,3 +301,16 @@ td{
     height:150px;
     width:150px;
 }
+
+/* Produits*/
+
+.autresPhotos img {
+    margin-bottom: 7px;
+}
+
+#imgMain{
+    height:475px;
+    max-height:475px;
+    display:block;
+    margin:auto;
+}
