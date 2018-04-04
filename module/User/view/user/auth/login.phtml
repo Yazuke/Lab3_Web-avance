@@ -3,7 +3,7 @@ $this->headTitle('Sign in');
 
 $form->get('mail')->setAttributes([
     'class'=>'form-control',
-    'placeholder'=>'skiwa@mail.com',
+    'placeholder'=>'skiwa@skiwa.fr',
     'required' => true,
     'autofocus' => true
 ])
@@ -21,22 +21,26 @@ $form->get('password')->setAttributes([
     ]);
 ?>
 
-<div class="row">
-    <div class="col-md-offset-4 col-md-3">
-        <form class="form-signin" method="post">
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <?php if ($isLoginError): ?>
+<div class="container">
+    <div class="login-container">
+        <div id="output"></div>
+        <div class="avatar"></div>
+        <div class="form-box">
+            <form class="form-signin" method="post">
+                <h2 class="form-signin-heading">Connexion au site</h2>
+                <?php if ($isLoginError): ?>
                 <div class="alert alert-warning" role="alert">
-                    Incorrect login and/or password.
-                </div>
-            <?php endif; ?>
-            <?= $this->formLabel($form->get('mail')); ?>
-            <?= $this->formElement($form->get('mail')); ?>
-            <?= $this->formLabel($form->get('password')); ?>
-            <?= $this->formElement($form->get('password')); ?>
-            <?= $this->formElement($form->get('redirect_url')); ?>
-            <?= $this->formElement($form->get('csrf')) ?>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
+                Identifiants incorrects.
+               </div>
+                <?php endif; ?>
+                <?= $this->formLabel($form->get('mail')); ?>
+                <?= $this->formElement($form->get('mail')); ?>
+                <?= $this->formLabel($form->get('password')); ?>
+                <?= $this->formElement($form->get('password')); ?>
+                <?= $this->formElement($form->get('redirect_url')); ?>
+                <?= $this->formElement($form->get('csrf')) ?>
+                <button class="btn btn-outlined btn-block btn-primary" type="submit">Connexion</button>
+            </form>
+        </div>
     </div>
 </div>

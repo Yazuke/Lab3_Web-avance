@@ -1,0 +1,19 @@
+<header>
+</header>
+
+<main>
+
+    <?php
+        echo $this->nb;
+         if($this->result){
+            echo "paiement réussi";
+        }else{
+            echo "paiement échoué";
+        }
+
+        echo "</br>";
+        echo "<span> Numéro de transaction : ".$s = substr(str_shuffle(str_repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5)), 0, 5).rand(1000000000,9999999999);
+
+
+    ?>
+</main>

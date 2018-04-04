@@ -54,5 +54,6 @@ class PanierController extends AbstractActionController
 
         return $this->redirect()->toRoute('home');
     }
+
 }
 

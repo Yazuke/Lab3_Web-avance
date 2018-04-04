@@ -74,52 +74,7 @@ class AuthController extends AbstractActionController
         return $this->redirect()->toRoute('login');
     }
 
-    public function logoutChangementMailAction(){
-        $this->_authManager->logout();
-        return $this->redirect()->toRoute('login/changementMail');
-    }
 
-    public function loginChangementMailAction() {
-        $redirectUrl = (string)$this->params()->fromQuery('redirectUrl', '');
-        if (strlen($redirectUrl)>2048) {
-            throw new \Exception("Too long redirectUrl argument passed");
-        }
-
-        $form = new LoginForm();
-        $form->get('redirect_url')->setValue($redirectUrl);
-
-        $isLoginError = false;
-
-        if ($this->getRequest()->isPost()) {
-
-            $data = $this->params()->fromPost();
-            $form->setData($data);
-            if($form->isValid()) {
-                $data = $form->getData();
-                $result = $this->_authManager->login($data['mail'], $data['password']);
-
-                if ($result->getCode() == Result::SUCCESS) {
-                    $redirectUrl = $this->params()->fromPost('redirect_url', '');
-
-                    if(empty($redirectUrl)) {
-                        return $this->redirect()->toRoute('home');
-                    } else {
-                        $this->redirect()->toUrl($redirectUrl);
-                    }
-                } else {
-                    $isLoginError = true;
-                }
-            } else {
-                $isLoginError = true;
-            }
-        }
-
-        return new ViewModel([
-            'form' => $form,
-            'isLoginError' => $isLoginError,
-            'redirectUrl' => $redirectUrl
-        ]);
-    }
 }
 
 ?>

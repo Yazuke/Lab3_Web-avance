@@ -94,6 +94,16 @@ return [
                     ],
                 ],
             ],
+            'paiement' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/panier/paiement',
+                    'defaults' => [
+                        'controller'    => Controller\PaiementController::class,
+                        'action'        => 'paiement',
+                    ],
+                ],
+            ],
             'ajoutPanier' => [
                 'type' => Segment::class,
                 'options' => [
@@ -129,6 +139,19 @@ return [
             ],
         ],
     ],
+    'access_filter' => [
+        'options' => [
+            'mode' => 'restrictive'
+        ],
+        'controllers' => [
+            Controller\IndexController::class => [
+                ['actions' => ['index'], 'allow' => '*'],
+            ],
+            Controller\PanierController::class => [
+                ['actions' => ['panier'], 'allow' => '@'],
+            ],
+        ]
+    ],
     'service_manager' => [
         'factories' => [
             Services\ProductTable::class => Services\Factories\ProductTableFactory::class,
@@ -143,6 +166,7 @@ return [
             Controller\IndexController::class => Controller\Factories\IndexControllerFactory::class,
             Controller\ProduitsController::class => Controller\Factories\ProduitsControllerFactory::class,
             Controller\PanierController::class => Controller\Factories\PanierControllerFactory::class,
+            Controller\PaiementController::class => Controller\Factories\PaiementControllerFactory::class,
             Controller\AdministrationController::class => Controller\Factories\AdministrationControllerFactory::class,
             Controller\ProfilController::class => Controller\Factories\ProfilControllerFactory::class,
         ],
@@ -155,19 +179,7 @@ return [
             'mainMenu' => View\Helper\Menu::class
         ],
     ],
-    'access_filter' => [
-        'options' => [
-            'mode' => 'restrictive'
-        ],
-        'controllers' => [
-            Controller\IndexController::class => [
-                ['actions' => ['index'], 'allow' => '*'],
-            ],
-            Controller\PanierController::class => [
-                ['actions' => ['panier'], 'allow' => '@'],
-            ],
-        ]
-    ],
+
 
     'view_manager' => [
         'display_not_found_reason' => true,
