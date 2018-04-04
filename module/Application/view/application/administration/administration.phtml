@@ -1,36 +1,73 @@
 <header>
 </header>
-Administration
+
 <main>
-    <table class="datatable">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Description</th>
-            <th>Prix</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($products as $p) : ?>
-            <tr>
-                <td>
-                    <a href="/web/public/produits/<?= $this->escapeHtml($p->_id)?>"><?= $this->escapeHtml($p->_name) ?></a>
-                </td>
-                <td><?= $this->escapeHtml($p->_description) ?></td>
-                <td><?= $this->escapeHtml($p->_price) ?></td>
-                <td>
-                    <!-- Rempli le formulaire d'édition grâce à une fonction JS -->
-                    <a href="#formEdition" onclick="fillEdit(<?php echo $this->escapeHtml($p->_id)?>,'<?= $this->escapeHtml($p->_name)?>','<?= $this->escapeHtml($p->_description)?>','<?= $this->escapeHtml($p->_price)?>')">
-                        Editer
-                    </a>
-                </td>
-                <td>
-                    <a href="/web/public/administration/suppression/<?=$this->escapeHtml($p->_id)?>">Supprimer</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+    <h3>Administration</h3></br>
+
+    <?php
+        foreach ($products as $p) :
+
+
+            echo '<div class="produitPanier row">';
+            echo '<div class="col-lg-2 col-md-2 col-sm-2 col-2">';
+            echo '<a href="./produits/'.$this->escapeHtml($p->_id).'"><img class="imageListe" src="http://jhaegman.com/stool.svg"></a>';
+
+            echo '</div>';
+            echo '<div class="col-lg-3 offset-lg-1 col-md-4 offset-md-2 col-sm-4 offset-sm-2 col-4 offset-3">';
+            echo '<a href="./produits/'.$this->escapeHtml($p->_id).'">'.$this->escapeHtml($p->_name).'</a>';
+            echo '<p class="produitDescParagraphe">'.$this->escapeHtml($p->_description).'</p>';
+            echo '</div>';
+            echo '<div class="col-lg-2 offset-lg-4 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+            echo '<span class="produitDescPrix">'.$this->escapeHtml($p->_price).'$CAN'.'</span><br></div>';
+
+            echo '<div class="col-lg-1 offset-lg-3 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+            echo '<a href="#formEdition" onclick="fillEdit('.$this->escapeHtml($p->_id).',\''.$this->escapeHtml($p->_name).'\',\''.$this->escapeHtml($p->_description).'\','.$this->escapeHtml($p->_price).')">Editer</a><br></div>';
+
+            echo '<div class="col-lg-2 offset-lg-2 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+            echo '<a href="/web/public/administration/suppression/'.$this->escapeHtml($p->_id).'">Supprimer des produits</a><br></div>';
+
+            echo '<br><br></div><hr>';
+
+        endforeach;
+
+    ?>
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <br>
