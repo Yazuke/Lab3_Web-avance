@@ -19,6 +19,9 @@ class ProductTable {
         return $return;
     }
 
+
+
+
     public function insert($name,$description,$price){
         //todo:test si update
         //todo:vérification des champs
