@@ -4,7 +4,8 @@
     <list default="true" id="31b6776f-4115-44ec-818f-7c0aeac415ae" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/module/Application/view/application/administration/administration.phtml" afterPath="$PROJECT_DIR$/module/Application/view/application/administration/administration.phtml" />
-      <change beforePath="$PROJECT_DIR$/module/Application/view/application/panier/panier.phtml" afterPath="$PROJECT_DIR$/module/Application/view/application/panier/panier.phtml" />
+      <change beforePath="$PROJECT_DIR$/module/Application/view/application/paiement/paiement.phtml" afterPath="$PROJECT_DIR$/module/Application/view/application/paiement/paiement.phtml" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,32 +49,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivilegeTable.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module/User/src/Services/PrivilegeTable.php">
+      <file leaf-file-name="paiement.phtml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/module/Application/view/application/paiement/paiement.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module/User/src/Services/AuthManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthAdapter.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/module/User/src/Services/AuthAdapter.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="442">
+              <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+              <folding>
+                <marker date="1522895072861" expanded="true" signature="405:448" ph="..." />
+                <marker date="1522895072861" expanded="true" signature="449:688" ph="..." />
+                <marker date="1522895072861" expanded="true" signature="567:581" ph="..." />
+                <marker date="1522895072861" expanded="true" signature="753:796" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,17 +94,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="administration.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="administration.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/Application/view/application/administration/administration.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="38" lean-forward="false" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+            <state relative-caret-position="510">
+              <caret line="42" column="85" lean-forward="false" selection-start-line="42" selection-start-column="85" selection-end-line="42" selection-end-column="85" />
               <folding>
-                <marker date="1522884019373" expanded="true" signature="1719:1936" ph="..." />
-                <marker date="1522884019373" expanded="true" signature="2011:2358" ph="..." />
-                <marker date="1522884019373" expanded="true" signature="2377:2447" ph="..." />
-                <marker date="1522884019373" expanded="true" signature="2377:2526" ph="..." />
+                <element signature="n#style#0;n#strong#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#strong#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <marker date="1522893575124" expanded="true" signature="3183:3253" ph="..." />
+                <marker date="1522893575124" expanded="true" signature="3183:3332" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4521">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/module/User/view/user/auth/login.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="782">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,20 +174,20 @@
         <option value="$PROJECT_DIR$/module/Application/src/Controller/ProfilController.php" />
         <option value="$PROJECT_DIR$/module/Application/src/Controller/Factories/PaiementControllerFactory.php" />
         <option value="$PROJECT_DIR$/module/Application/src/Controller/PaiementController.php" />
-        <option value="$PROJECT_DIR$/module/Application/view/application/paiement/paiement.phtml" />
         <option value="$PROJECT_DIR$/module/User/src/Controller/AuthController.php" />
         <option value="$PROJECT_DIR$/module/User/src/Services/AuthManager.php" />
         <option value="$PROJECT_DIR$/module/User/src/Module.php" />
         <option value="$PROJECT_DIR$/module/User/view/user/auth/login.phtml" />
         <option value="$PROJECT_DIR$/module/Application/view/layout/layout.phtml" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/module/Application/view/application/produits/produits.phtml" />
         <option value="$PROJECT_DIR$/module/Application/config/module.config.php" />
         <option value="$PROJECT_DIR$/module/Application/src/Controller/PanierController.php" />
         <option value="$PROJECT_DIR$/module/Application/src/Services/PanierTable.php" />
         <option value="$PROJECT_DIR$/module/Application/view/application/index/index.phtml" />
         <option value="$PROJECT_DIR$/module/Application/view/application/panier/panier.phtml" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/module/Application/view/application/administration/administration.phtml" />
+        <option value="$PROJECT_DIR$/module/Application/view/application/paiement/paiement.phtml" />
       </list>
     </option>
   </component>
@@ -622,12 +628,12 @@
       <workItem from="1522605592069" duration="25214000" />
       <workItem from="1522682090458" duration="7332000" />
       <workItem from="1522707533340" duration="9486000" />
-      <workItem from="1522870896286" duration="11162000" />
+      <workItem from="1522870896286" duration="14777000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67363000" />
+    <option name="totallyTimeSpent" value="70978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -932,30 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="57" column="22" lean-forward="true" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/User/view/user/auth/login.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/Application/view/application/paiement/paiement.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/Application/config/module.config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="596">
@@ -1074,15 +1056,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4521">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/User/view/user/auth/login.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/module/Application/view/application/administration/administration.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="38" lean-forward="false" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+        <state relative-caret-position="510">
+          <caret line="42" column="85" lean-forward="false" selection-start-line="42" selection-start-column="85" selection-end-line="42" selection-end-column="85" />
           <folding>
-            <marker date="1522884019373" expanded="true" signature="1719:1936" ph="..." />
-            <marker date="1522884019373" expanded="true" signature="2011:2358" ph="..." />
-            <marker date="1522884019373" expanded="true" signature="2377:2447" ph="..." />
-            <marker date="1522884019373" expanded="true" signature="2377:2526" ph="..." />
+            <element signature="n#style#0;n#strong#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#strong#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1522893575124" expanded="true" signature="3183:3253" ph="..." />
+            <marker date="1522893575124" expanded="true" signature="3183:3332" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/Application/view/application/paiement/paiement.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+          <folding>
+            <marker date="1522895072861" expanded="true" signature="405:448" ph="..." />
+            <marker date="1522895072861" expanded="true" signature="449:688" ph="..." />
+            <marker date="1522895072861" expanded="true" signature="567:581" ph="..." />
+            <marker date="1522895072861" expanded="true" signature="753:796" ph="..." />
           </folding>
         </state>
       </provider>

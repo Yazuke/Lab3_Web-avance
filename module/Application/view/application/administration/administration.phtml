@@ -33,60 +33,28 @@
     ?>
 
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <br>
-    <br>
-    <br>
-    <form action="administration/ajout" method="post">
-        <input name="name" placeholder="Nom"/>
-        <input name="description" placeholder="Description"/>
-        <input name="price" placeholder="Prix"/>
-        <button type="submit">Ajouter</button>
-    </form>
-
-    <form id="formEdition" action="administration/edition" method="post">
-        <input id="formEditionId" name="id" type="hidden"/>
-        <input id="formEditionName" name="name" placeholder="Nom"/>
-        <input id="formEditionDescription" name="description" placeholder="Description"/>
-        <input id="formEditionPrice" name="price" placeholder="Prix"/>
-        <button type="submit">Editer</button>
-    </form>
+<style>form>input{margin:0 0 5px 0}</style>
+    <div class="produitPanier row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+            <form action="administration/ajout" method="post">
+                <strong class="col-lg-12" style="font-size:2em;margin-bottom: 20px;"><span>Ajouter un produit</span></strong>
+                <input class="col-lg-12" name="name" placeholder="Ex: Tabouret en fer"/>
+                <input class="col-lg-12" name="description" placeholder="Ex: Très joli tabouret en fer"/>
+                <input class="col-lg-4" name="price" placeholder="Ex: 50"/><strong>  $CAN</strong>
+                <button class="col-lg-12 btn btn-outlined btn-primary" type="submit">Ajouter</button>
+            </form>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+            <form id="formEdition" action="administration/edition" method="post" class="hidden">
+                <strong class="col-lg-12" style="font-size:2em;margin-bottom: 20px;"><span>Editer un produit</span></strong>
+                <input id="formEditionId" name="id" type="hidden"/>
+                <input class="col-lg-12" id="formEditionName" name="name" placeholder="Nom"/>
+                <input class="col-lg-12" id="formEditionDescription" name="description" placeholder="Description"/>
+                <input class="col-lg-4" id="formEditionPrice" name="price" placeholder="Prix"/>
+                <button class="col-lg-12 btn btn-outlined btn-primary" type="submit">Editer un produit</button>
+            </form>
+        </div>
+    </div>
 </main>
 
 
@@ -98,5 +66,7 @@
         document.getElementById("formEditionName").value =name;
         document.getElementById("formEditionDescription").value =description;
         document.getElementById("formEditionPrice").value =price;
+
+        document.getElementById("formEdition").classList.remove("hidden");
     }
 </script>
