@@ -80,11 +80,16 @@ class PanierTable {
         }
 
         if($quantity==1){
-            $this->_tableGateway->delete(['idProduct' => $idProduct]);
+            $this->_tableGateway->delete(['idUser'=>$idUser, 'idProduct' => $idProduct]);
         }else{
             $tab=['idUser' => $idUser,'idProduct' => $idProduct,'quantity'=>$quantity-1];
             $this->_tableGateway->update($tab,['id'=>$id]);
         }
+    }
+
+
+    public function suppressionProduitGlobal($idProduct){
+        $this->_panierTable->delete(['idProduct'=>$idProduct]);
     }
 
 

@@ -30,8 +30,12 @@ class PanierController extends AbstractActionController
 
         //Récupère les objets Product qui ont l'id récupéré dans Panier (permet d'afficher leur nom, prix etc)
         foreach ($this->_panierTable->fetchByUserConnected() as $panier){
-            $produits[$index]=$this->_productTable->find($panier->_idProduct);
-            $index++;
+            $find=$this->_productTable->find($panier->_idProduct);
+            if($find){
+                $produits[$index]=$find;
+                $index++;
+            }
+
         }
 
         //Si le panier a des éléments, on lui renvoie tout, sinon, on lui renvoie juste le nombre d'éléments (=0)
@@ -61,5 +65,6 @@ class PanierController extends AbstractActionController
 
         return $this->redirect()->toRoute('panier');
     }
+
 }
 

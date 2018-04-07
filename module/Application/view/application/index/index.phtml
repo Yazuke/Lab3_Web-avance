@@ -8,18 +8,18 @@
             <div class="col-lg-3 offset-lg-1 col-md-3  col-sm-3 col-3">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <a href="./produits/<?= $this->escapeHtml($p->_id)?>" class="produitDescTitre"><?= $this->escapeHtml($p->_name) ?></a>
+                        <a href="/web/public/produits/<?= $this->escapeHtml($p->_id)?>" class="produitDescTitre"><?= $this->escapeHtml($p->_name) ?></a>
                         <span class="prix_index"><?= $this->escapeHtml($p->_price) ?> $CAN</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <a href="./produits/<?= $this->escapeHtml($p->_id)?>"><img class="imageGrille" src="http://jhaegman.com/stool.svg"></a>
+                        <a href="/web/public/produits/<?= $this->escapeHtml($p->_id)?>"><img class="imageGrille" src="http://jhaegman.com/stool.svg"></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-5 col-md-8 col-sm-8 col-8 voir_plus">
-                        <a href="./produits/<?= $this->escapeHtml($p->_id)?>" class="btn btn-default btn-block ">Voir
+                        <a href="/web/public/produits/<?= $this->escapeHtml($p->_id)?>" class="btn btn-default btn-block ">Voir
                             plus</a>
                     </div>
                     <div class="col-lg-4 col-md-2 col-sm-2 col-1">
@@ -31,4 +31,28 @@
             <?php endforeach; ?>
         </div>
     </div>
+
+    <?php if ($products->count()): ?>
+
+    <center>
+    <div>
+        <ul class="pagination">
+
+        <?php
+            if ($products->getCurrentPageNumber()!=1){
+                echo "<li><a href='/web/public/page/".($products->getCurrentPageNumber()-1)."'>".($products->getCurrentPageNumber()-1).'</a></li>';
+            }
+
+            echo "<li class='active'><a>".$products->getCurrentPageNumber()."</a></li>";
+
+            if($products->getCurrentPageNumber()<$products->count()){
+                echo "<li><a href='/web/public/page/".($products->getCurrentPageNumber()+1)."'>".($products->getCurrentPageNumber()+1).'</a></li>';
+            }
+//        foreach( $products as $item){
+//            }
+            ?>
+        </ul>
+    </div>
+    </center>
+    <?php endif; ?>
 </main>

@@ -21,7 +21,7 @@ return [
                     'route'    => '/',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'action'     => 'redirect',
                     ],
                 ],
             ],
@@ -150,6 +150,17 @@ return [
                     ],
                 ],
             ],
+            'paginator' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/page/:page',
+                    'defaults' => array(
+                        'page' => 1,
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'index',
+                    ),
+                ),
+            ),
         ],
     ],
     'access_filter' => [

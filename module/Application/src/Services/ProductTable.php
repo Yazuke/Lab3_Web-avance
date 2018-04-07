@@ -3,6 +3,10 @@ namespace Application\Services;
 
 use Zend\Db\TableGateway\TableGatewayInterface;
 use Application\Model\Product;
+use Zend\Db\Sql\Select;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Paginator\Adapter\DbSelect;
+use Zend\Paginator\Paginator;
 
 class ProductTable {
     protected $_tableGateway;
@@ -11,20 +15,35 @@ class ProductTable {
         $this->_tableGateway = $tableGateway;
     }
 
-    public function fetchAll() {
-        $resultSet = $this->_tableGateway->select();
-        $return = array();
-        foreach( $resultSet as $r )
-            $return[]=$r;
-        return $return;
+    public function fetchAll($paginated=false) {
+//        $resultSet = $this->_tableGateway->select();
+//        $return = array();
+//        foreach( $resultSet as $r )
+//            $return[]=$r;
+//        return $return;
+
+        if ($paginated) {
+            return $this->fetchPaginatedResults();
+        }
+        return $this->_tableGateway->select();
+    }
+
+    public function fetchPaginatedResults(){
+        $select = new Select($this->_tableGateway->getTable());
+        $resultSetPrototype = new ResultSet();
+        $resultSetPrototype->setArrayObjectPrototype(new Product());
+        $paginatorAdapter = new DbSelect(
+            $select,
+            $this->_tableGateway->getAdapter(),
+            $resultSetPrototype
+        );
+        $paginator = new Paginator($paginatorAdapter);
+        return $paginator;
     }
 
 
 
-
     public function insert($name,$description,$price){
-        //todo:test si update
-        //todo:vérification des champs
         $tab=['name' => $name,'description' => $description,'price' => $price];
         $this->_tableGateway->insert($tab);
     }
@@ -41,8 +60,12 @@ class ProductTable {
 
 
     public function find($id){
-        return $this->_tableGateway->select(['id' => $id])->current();
+        $select=$this->_tableGateway->select(['id' => $id]);
+        if(!$select){
+            return false;
+        }else{
+            return $select->current();
+        }
     }
-
 }
 ?>

@@ -22,8 +22,26 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
+
+        $paginated=true;
+
+        // grab the paginator from the AlbumTable
+        $paginator = $this->_table->fetchAll($paginated);
+
+        if($paginated){
+            // set the current page to what has been passed in query string, or to 1 if none set
+            $paginator->setCurrentPageNumber((int) $this->params()->fromRoute('page', 1));
+            // set the number of items per page to 10
+            $paginator->setItemCountPerPage(8);
+        }
+
         return new ViewModel([
-            'products' => $this->_table->fetchAll(),
+            'products' => $paginator,
+            'paginated'=> $paginated
         ]);
+    }
+
+    public function redirectAction(){
+        return $this->redirect()->toRoute('paginator');
     }
 }

@@ -22,6 +22,8 @@ class AdministrationControllerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container,
                              $requestedName, array $options = null)
     {
-        return new AdministrationController($container->get(ProductTable::class));
+        $panierTable = $container->get(\Application\Services\PanierTable::class);
+
+        return new AdministrationController($container->get(ProductTable::class),$panierTable);
     }
 }

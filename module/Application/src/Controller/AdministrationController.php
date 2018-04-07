@@ -7,6 +7,7 @@
 
 namespace Application\Controller;
 
+use Application\Services\PanierTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Services\ProductTable;
@@ -15,10 +16,12 @@ use Application\Model\Product;
 class AdministrationController extends AbstractActionController
 {
     private $_table;
+    private $_panierTable;
 
-    public function __construct(ProductTable $table)
+    public function __construct(ProductTable $table,PanierTable $panierTable)
     {
         $this->_table = $table;
+        $this->_panierTable = $panierTable;
     }
 
     //affiche tout au chargement de /administration
@@ -32,6 +35,7 @@ class AdministrationController extends AbstractActionController
     //lorsqu'on va sur administration/suppresion:id, supprime la ligne en bdd et redirige vers /administration
     public function suppressionAction(){
         $this->_table->delete($this->params()->fromRoute('id'));
+        $this->_panierTable->delete($this->params()->fromRoute('id'));
         return $this->redirect()->toRoute('administration');
     }
 

@@ -20,6 +20,7 @@ return [
     'Zend\Session',
     'Zend\Form',
     'Zend\Validator',
+    'Zend\Paginator',
     'Application',
     'User',
 ];
