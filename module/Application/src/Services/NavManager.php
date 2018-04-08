@@ -54,6 +54,15 @@ class NavManager
             //Récupère la valeur du privilege de l'utilisateur connecté
             $privilege=$this->privilege->findById($idPrivilege)->_value;
 
+            //Si utilisateur admin, affiche lien d'admin
+            if($idPrivilege==1){
+                $items[] = [
+                    'id' => 'administration',
+                    'label' => 'Administration',
+                    'link'=>$url('administration')
+                ];
+            }
+
             $items[] = [
                 'id' => 'logout',
                 'label' => $username."[".$privilege."]",
@@ -76,6 +85,8 @@ class NavManager
                 'label' => 'Panier',
                 'link'=>$url('panier')
             ];
+
+
         }
 
         return $items;

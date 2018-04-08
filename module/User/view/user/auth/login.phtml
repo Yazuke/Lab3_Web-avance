@@ -3,7 +3,7 @@ $this->headTitle('Sign in');
 
 $form->get('mail')->setAttributes([
     'class'=>'form-control',
-    'placeholder'=>'skiwa@skiwa.fr',
+    'placeholder'=>'admin@admin.fr',
     'required' => true,
     'autofocus' => true
 ])
@@ -20,6 +20,10 @@ $form->get('password')->setAttributes([
         'class' => 'sr-only'
     ]);
 ?>
+<br>
+<span><b>Utilisateur normal:</b> user@user.fr:Bonjours123</span><br>
+<span><b>Administrateur:</b> admin@admin.fr:Bonjours123</span>
+
 
 <div class="container">
     <div class="login-container">

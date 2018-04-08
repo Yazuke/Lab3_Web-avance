@@ -34,7 +34,8 @@ class AuthAdapter implements AdapterInterface
                 ['Invalid credentials.']);
         }
 
-        $sentPass = $this->_password;
+        $sentPass = hash('sha256', $this->_password . $user->_salt);
+
 
         if ($user->_password == $sentPass) {
             return new Result(
