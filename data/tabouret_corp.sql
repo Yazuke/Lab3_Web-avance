@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 07, 2018 at 06:18 PM
+-- Generation Time: Apr 08, 2018 at 04:43 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -57,15 +57,16 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `idProduct` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `panier`
 --
 
 INSERT INTO `panier` (`id`, `idUser`, `idProduct`, `quantity`) VALUES
-(34, 1, 10, 2),
-(33, 1, 12, 1);
+(39, 1, 12, 1),
+(38, 1, 35, 1),
+(40, 1, 33, 1);
 
 -- --------------------------------------------------------
 
@@ -101,18 +102,17 @@ CREATE TABLE IF NOT EXISTS `product` (
   `description` varchar(100) NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `price`) VALUES
-(31, 'Tabouret en mousse', 'Très joli tabouret en mousse', 10),
+(35, 'Tabouret en mousse', 'Très joli tabouret en mousse', 10),
 (12, 'Tabouret en titane', 'Très joli tabouret en titane', 220),
-(10, 'Tabouret en fer', 'Très joli tabouret en fer', 100),
-(11, 'Tabouret en argent ', 'Très joli tabouret en argent', 200),
-(16, 'Tabouret en or', 'Très joli tabouret en or', 1000),
+(33, 'Tabouret en or', 'Très joli tabouret en or', 500),
+(34, 'Tabouret en argent', 'Très joli tabouret en argent', 30),
 (17, 'Tabouret en Lithium', 'Très joli tabouret en Lithium', 30),
 (18, 'Tabouret en tungsten', 'Très joli tabouret en tungsten', 740),
 (19, 'Tabouret en platine', 'Très joli tabouret en platine', 780),
@@ -124,7 +124,9 @@ INSERT INTO `product` (`id`, `name`, `description`, `price`) VALUES
 (25, 'Tabouret en zirconium', 'Très joli tabouret en zirconium', 400),
 (26, 'Tabouret en radium', 'Très joli tabouret en radium', 880),
 (27, 'Tabouret en souffre', 'Très joli tabouret en souffre', 160),
-(28, 'Tabouret en silicone', 'Très joli tabouret en silicone', 140);
+(28, 'Tabouret en silicone', 'Très joli tabouret en silicone', 140),
+(36, 'Tabouret en bois', 'Très joli tabouret en bois', 60),
+(37, 'Tabouret exotique', 'Très joli tabouret exotique', 600);
 
 -- --------------------------------------------------------
 
@@ -137,8 +139,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `mail` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `salt` int(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `salt` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -147,8 +149,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `mail`, `password`, `salt`) VALUES
-(1, 'skiwa', 'skiwa@skiwa.fr', 'Bonjours123', 12345),
-(2, 'user', '', 'Bonjours123', 12345);
+(1, 'admin', 'admin@admin.fr', '9e95dca6bfafbffb3b9ae0b3a27df91a3819bd53e6bea7d5e883afb54e8e43fd', 'E1F53135E559C253'),
+(2, 'user', 'user@user.fr', '3863f65c6609ece2964e1e4c52a4338771b9438ced88bffbb705de0bbce2dca5', '84B03D034B409D4E');
 
 -- --------------------------------------------------------
 
