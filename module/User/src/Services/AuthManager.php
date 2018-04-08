@@ -82,7 +82,7 @@ class AuthManager
         // In restrictive mode, we forbid access for unauthorized users to any
         // action not listed under 'access_filter' key (for security reasons).
         if ($mode=='restrictive' && !$this->authService->hasIdentity())
-            return false;
+            return true;
 
         // Permit access to this page.
         return true;
