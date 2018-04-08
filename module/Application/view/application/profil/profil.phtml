@@ -5,7 +5,7 @@
     <span><strong>Nom d'utilisateur : </strong><?=$this->escapeHtml($username)?></span><br>
     <span><strong>Adresse mail : </strong><?=$this->escapeHtml($mail)?></span><br>
 
-    <form action="/web/public/profil/changerMail" method="post">
+    <form action="<?=$this->basePath()?>/profil/changerMail" method="post">
         <span><strong>Changer email</strong></span><input type="email" name="mail"/>
         <button type="submit">Envoyer</button>
     </form>

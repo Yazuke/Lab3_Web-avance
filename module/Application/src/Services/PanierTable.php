@@ -87,6 +87,9 @@ class PanierTable {
         }
     }
 
+    public function deleteAll($idProduct){
+        $this->_tableGateway->delete(['idProduct' => $idProduct]);
+    }
 
     public function suppressionProduitGlobal($idProduct){
         $this->_panierTable->delete(['idProduct'=>$idProduct]);

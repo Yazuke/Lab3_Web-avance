@@ -34,8 +34,10 @@ class AdministrationController extends AbstractActionController
 
     //lorsqu'on va sur administration/suppresion:id, supprime la ligne en bdd et redirige vers /administration
     public function suppressionAction(){
+
+        $this->_panierTable->deleteAll($this->params()->fromRoute('id'));
+
         $this->_table->delete($this->params()->fromRoute('id'));
-        $this->_panierTable->delete($this->params()->fromRoute('id'));
         return $this->redirect()->toRoute('administration');
     }
 

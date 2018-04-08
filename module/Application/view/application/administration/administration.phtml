@@ -3,37 +3,7 @@
 
 <main>
     <h3>Administration</h3></br>
-
-    <?php
-        foreach ($products as $p) :
-
-
-            echo '<div class="produitPanier row">';
-            echo '<div class="col-lg-2 col-md-2 col-sm-2 col-2">';
-            echo '<a href="./produits/'.$this->escapeHtml($p->_id).'"><img class="imageListe" src="http://jhaegman.com/stool.svg"></a>';
-
-            echo '</div>';
-            echo '<div class="col-lg-3 offset-lg-1 col-md-4 offset-md-2 col-sm-4 offset-sm-2 col-4 offset-3">';
-            echo '<a href="./produits/'.$this->escapeHtml($p->_id).'">'.$this->escapeHtml($p->_name).'</a>';
-            echo '<p class="produitDescParagraphe">'.$this->escapeHtml($p->_description).'</p>';
-            echo '</div>';
-            echo '<div class="col-lg-2 offset-lg-4 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
-            echo '<span class="produitDescPrix">'.$this->escapeHtml($p->_price).'$CAN'.'</span><br></div>';
-
-            echo '<div class="col-lg-1 offset-lg-3 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
-            echo '<a href="#formEdition" onclick="fillEdit('.$this->escapeHtml($p->_id).',\''.$this->escapeHtml($p->_name).'\',\''.$this->escapeHtml($p->_description).'\','.$this->escapeHtml($p->_price).')">Editer</a><br></div>';
-
-            echo '<div class="col-lg-2 offset-lg-2 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
-            echo '<a href="/web/public/administration/suppression/'.$this->escapeHtml($p->_id).'">Supprimer des produits</a><br></div>';
-
-            echo '<br><br></div><hr>';
-
-        endforeach;
-
-    ?>
-
-</main>
-<style>form>input{margin:0 0 5px 0}</style>
+    <style>form>input{margin:0 0 5px 0}</style>
     <div class="produitPanier row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
             <form action="administration/ajout" method="post">
@@ -55,7 +25,38 @@
             </form>
         </div>
     </div>
+    <br>
+    <hr>
+    <?php
+        foreach ($products as $p) :
+
+
+            echo '<div class="produitPanier row">';
+            echo '<div class="col-lg-2 col-md-2 col-sm-2 col-2">';
+            echo '<a href="'.$this->basePath().'/produits/'.$this->escapeHtml($p->_id).'"><img class="imageListe" src="http://jhaegman.com/stool.svg"></a>';
+
+            echo '</div>';
+            echo '<div class="col-lg-3 offset-lg-1 col-md-4 offset-md-2 col-sm-4 offset-sm-2 col-4 offset-3">';
+            echo '<a href="'.$this->basePath().'/produits/'.$this->escapeHtml($p->_id).'">'.$this->escapeHtml($p->_name).'</a>';
+            echo '<p class="produitDescParagraphe">'.$this->escapeHtml($p->_description).'</p>';
+            echo '</div>';
+            echo '<div class="col-lg-2 offset-lg-4 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+            echo '<span class="produitDescPrix">'.$this->escapeHtml($p->_price).'$CAN'.'</span><br></div>';
+
+            echo '<div class="col-lg-1 offset-lg-3 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+            echo '<a href="#formEdition" onclick="fillEdit('.$this->escapeHtml($p->_id).',\''.$this->escapeHtml($p->_name).'\',\''.$this->escapeHtml($p->_description).'\','.$this->escapeHtml($p->_price).')">Editer</a><br></div>';
+
+            echo '<div class="col-lg-2 offset-lg-2 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+            echo '<a href="'.$this->basePath().'/administration/suppression/'.$this->escapeHtml($p->_id).'">Supprimer des produits</a><br></div>';
+
+            echo '<br><br></div><hr>';
+
+        endforeach;
+
+    ?>
+
 </main>
+
 
 
 <script>

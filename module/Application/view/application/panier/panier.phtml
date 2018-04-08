@@ -27,7 +27,7 @@
                 echo '<span class="produitDescPrix">'.$this->escapeHtml($produits[$index]->_price).'$CAN x '.$this->escapeHtml($panier->_quantity).'</span><br></div>';
 
                 echo '<div class="col-lg-2 offset-lg-4 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
-                echo '<a href="/web/public/panier/suppression/'.$this->escapeHtml($produits[$index]->_id).'" style="font-size:0.8em;color:darkred;line-height:3em">Supprimer</a><br></div>';
+                echo '<a href="'.$this->basePath().'/panier/suppression/'.$this->escapeHtml($produits[$index]->_id).'" style="font-size:0.8em;color:darkred;line-height:3em">Supprimer</a><br></div>';
                 echo '<br><br></div><hr>';
 
 
@@ -42,7 +42,7 @@
             echo '<span class="produitDescPrixBlack" >Sous total avec taxes : </span><span class="produitDescPrix">'.$sousTotalT.'$CAN</span><br>';
 
 
-            echo '<br><br><a href="/web/public/panier/paiement" class="btn btn-outlined btn-block btn-primary">Payer le panier</a>';
+            echo '<br><br><a href="'.$this->basePath().'/panier/paiement" class="btn btn-outlined btn-block btn-primary">Payer le panier</a>';
         }else{
             echo "Panier vide";
         }

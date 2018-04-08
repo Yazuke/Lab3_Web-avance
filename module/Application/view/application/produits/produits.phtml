@@ -36,7 +36,7 @@
                 <p class="produitDescParagraphe"><?= $this->escapeHtml($product->_description)?></p><br><br>
             </div>
             <div>
-                <span class="produitDescPrix"><?=$this->escapeHtml($product->_price)?>$CAN</span><br><a class="btn btn-outlined btn-primary" href="/web/public/panier/ajout/<?=$this->escapeHtml($product->_id)?>">Ajouter au panier</a>
+                <span class="produitDescPrix"><?=$this->escapeHtml($product->_price)?>$CAN</span><br><a class="btn btn-outlined btn-primary" href="<?=$this->basePath()?>/panier/ajout/<?=$this->escapeHtml($product->_id)?>">Ajouter au panier</a>
             </div>
         </div>
 
