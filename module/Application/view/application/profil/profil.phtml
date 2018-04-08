@@ -2,12 +2,26 @@
 </header>
 
 <main>
-    <span><strong>Nom d'utilisateur : </strong><?=$this->escapeHtml($username)?></span><br>
-    <span><strong>Adresse mail : </strong><?=$this->escapeHtml($mail)?></span><br>
+    <br><br>
+    <div class="row">
+        <span class=produitDescTitre"><strong>Nom d'utilisateur : </strong></span>
+        <span class="produitDescParagraphe"><?=$this->escapeHtml($username)?></span>
+    </div>
+    <br>
+    <div class="row">
+        <span><strong>Adresse mail : </strong></span>
+        <span><?=$this->escapeHtml($mail)?></span>
+    </div>
+    <br>
 
-    <form action="<?=$this->basePath()?>/profil/changerMail" method="post">
-        <span><strong>Changer email</strong></span><input type="email" name="mail"/>
-        <button type="submit">Envoyer</button>
-    </form>
+    <br><br>
+
+    <div class="row">
+        <form action="<?=$this->basePath()?>/profil/changerMail" method="post">
+            <span class=produitDescTitre"><strong>Changer email</strong></span>
+            <input type="email" name="mail"/>
+            <button type="submit" class="btn btn-outlined btn-primary">Envoyer</button>
+        </form>
+    </div>
 
 </main>
