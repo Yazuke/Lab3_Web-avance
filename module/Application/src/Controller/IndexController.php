@@ -20,18 +20,18 @@ class IndexController extends AbstractActionController
         $this->_table = $table;
     }
 
+    //Arrivée sur l'index
     public function indexAction()
     {
-
         $paginated=true;
 
-        // grab the paginator from the AlbumTable
+        //Crée les objets du paginator
         $paginator = $this->_table->fetchAll($paginated);
 
         if($paginated){
-            // set the current page to what has been passed in query string, or to 1 if none set
+            //Set le numéro de la page à celui de l'url
             $paginator->setCurrentPageNumber((int) $this->params()->fromRoute('page', 1));
-            // set the number of items per page to 10
+            //Set le nombre d'objets affichés à 8
             $paginator->setItemCountPerPage(8);
         }
 
@@ -41,6 +41,7 @@ class IndexController extends AbstractActionController
         ]);
     }
 
+    // / renvoie vers /page/1
     public function redirectAction(){
         return $this->redirect()->toRoute('paginator');
     }

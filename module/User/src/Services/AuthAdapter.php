@@ -24,7 +24,7 @@ class AuthAdapter implements AdapterInterface
 
     public function authenticate()
     {
-//        $user = $this->_userManager->findByUsername($this->_username);
+        //Fonction de base adaptée pour une connexion par mail
         $user = $this->_userManager->findByMail($this->_mail);
 
         if ($user == null) {

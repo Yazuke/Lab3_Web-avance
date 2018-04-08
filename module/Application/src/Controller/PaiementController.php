@@ -18,7 +18,7 @@ class PaiementController extends AbstractActionController
 
     }
 
-
+    //Au clic sur le bouton de paiement, dit si le paiement a réussi
     public function paiementAction(){
 
         $result=false;

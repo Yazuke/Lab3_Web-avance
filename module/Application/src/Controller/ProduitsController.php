@@ -25,6 +25,7 @@ class ProduitsController extends AbstractActionController
 
     public function produitsAction()
     {
+        //Récupère l'objet ayant pour id celui de la route
         $this->_id=$this->params()->fromRoute('id');
         return new ViewModel([
             'product' => $this->_table->find($this->params()->fromRoute('id')),

@@ -16,6 +16,7 @@ return [
     'router' => [
         'routes' => [
             'home' => [
+                //Redirige vers /page/1 dans le controller
                 'type' => Literal::class,
                 'options' => [
                     'route'    => '/',
@@ -51,6 +52,7 @@ return [
                     ],
                 ],
             ],
+            //suppression d'un produit depuis l'administration
             'suppression' => [
                 'type' => Segment::class,
                 'options' => [
@@ -150,6 +152,7 @@ return [
                     ],
                 ],
             ],
+            //Pagination
             'paginator' => array(
                 'type' => 'segment',
                 'options' => array(

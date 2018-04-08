@@ -24,12 +24,15 @@ class PanierController extends AbstractActionController
         $this->_productTable = $productTable;
     }
 
+    //A l'arrivée sur la page panier
     public function panierAction()
     {
         $index=0;
 
-        //Récupère les objets Product qui ont l'id récupéré dans Panier (permet d'afficher leur nom, prix etc)
+        //Récupère tous les éléments du panier
+        //Assigne ensuite chaque produit qui correspond à celui dans le panier (affichage du nom, prix etc)
         foreach ($this->_panierTable->fetchByUserConnected() as $panier){
+            //On vérifie en premier si le produit du panier existe vraiment (au cas où il aurait été supprimé)
             $find=$this->_productTable->find($panier->_idProduct);
             if($find){
                 $produits[$index]=$find;
@@ -52,6 +55,7 @@ class PanierController extends AbstractActionController
         }
     }
 
+    //A l'ajout d'un produit au panier
     public function ajoutPanierAction(){
 
         $this->_panierTable->insert($this->params()->fromRoute('id'));
@@ -59,6 +63,7 @@ class PanierController extends AbstractActionController
         return $this->redirect()->toRoute('home');
     }
 
+    //A la suppression d'un produit du panier
     public function suppressionPanierAction(){
 
         $this->_panierTable->delete($this->params()->fromRoute('id'));

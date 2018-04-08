@@ -10,6 +10,7 @@ class UserPrivilegeTable {
         $this->_tableGateway = $tableGateway;
     }
 
+    //Renvoie tout
     public function fetchAll() {
         $resultSet = $this->_tableGateway->select();
         $return = array();
@@ -18,6 +19,7 @@ class UserPrivilegeTable {
         return $return;
     }
 
+    //Renvoie requete pour un id utilisateur
     public function findById($idUser){
         return $this->_tableGateway->select(['idUser' => $idUser])->current();
     }

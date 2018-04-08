@@ -4,6 +4,7 @@
 <main>
     <div class="in row">
         <div class="contenuPanier col-lg-12 col-md-12 col-sm-12 col-12 row" >
+            <!-- Affiche chaque produit -->
             <?php foreach ($products as $p) : ?>
             <div class="col-lg-3 offset-lg-1 col-md-3  col-sm-3 col-3">
                 <div class="row">
@@ -32,6 +33,7 @@
         </div>
     </div>
 
+    <!-- Si la pagination est activée, affiche un menu de navigation -->
     <?php if ($products->count()): ?>
 
     <center>
@@ -40,11 +42,15 @@
 
         <?php
             $page=0;
+            //Pour chaque page
             while($page!=$products->count()){
                 $page++;
+                //Page actuelle (classe "active")
                 if($page==$products->getCurrentPageNumber()){
                     echo "<li class='active'><a>".$products->getCurrentPageNumber()."</a></li>";
-                }else{
+                }
+                //Autres pages
+                else{
                     echo "<li><a href='".$this->url()."/../".$page."'>".$page.'</a></li>';
                 }
             }

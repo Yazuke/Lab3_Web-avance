@@ -30,7 +30,6 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            // Utilisation du constructeur AuthControllerFactory pour construire AuthController
             Controller\AuthController::class => Controller\Factories\AuthControllerFactory::class,
         ],
     ],

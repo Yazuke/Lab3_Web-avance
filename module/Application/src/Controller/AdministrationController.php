@@ -11,7 +11,6 @@ use Application\Services\PanierTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Services\ProductTable;
-use Application\Model\Product;
 
 class AdministrationController extends AbstractActionController
 {
@@ -24,7 +23,7 @@ class AdministrationController extends AbstractActionController
         $this->_panierTable = $panierTable;
     }
 
-    //affiche tout au chargement de /administration
+    //Affiche tous les produits sur la page administration
     public function administrationAction()
     {
         return new ViewModel([
@@ -32,15 +31,19 @@ class AdministrationController extends AbstractActionController
         ]);
     }
 
-    //lorsqu'on va sur administration/suppresion:id, supprime la ligne en bdd et redirige vers /administration
+    //Supprime un produit
     public function suppressionAction(){
 
+        //Supprime le produit de tous les paniers
         $this->_panierTable->deleteAll($this->params()->fromRoute('id'));
 
+        //Supprime l'objet
         $this->_table->delete($this->params()->fromRoute('id'));
+
         return $this->redirect()->toRoute('administration');
     }
 
+    //Ajoute un produit
     public function ajoutAction(){
 
         //Récupère données du formulaire
@@ -49,10 +52,10 @@ class AdministrationController extends AbstractActionController
         //Insere les données
         $this->_table->insert($request['name'],$request['description'],$request['price']);
 
-        //Redirige vers /administration
         return $this->redirect()->toRoute('administration');
     }
 
+    //Edite un produit
     public function editionAction(){
 
     //Récupère données du formulaire
@@ -61,7 +64,6 @@ class AdministrationController extends AbstractActionController
     //Insere les données
     $this->_table->update($request['id'],$request['name'],$request['description'],$request['price']);
 
-    //Redirige vers /administration
     return $this->redirect()->toRoute('administration');
 }
 

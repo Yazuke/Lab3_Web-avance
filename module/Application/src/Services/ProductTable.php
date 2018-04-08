@@ -15,19 +15,16 @@ class ProductTable {
         $this->_tableGateway = $tableGateway;
     }
 
+    //Récupère tous les produits
     public function fetchAll($paginated=false) {
-//        $resultSet = $this->_tableGateway->select();
-//        $return = array();
-//        foreach( $resultSet as $r )
-//            $return[]=$r;
-//        return $return;
-
+        //Si pagination, on ne récupère pas tout d'un coup
         if ($paginated) {
             return $this->fetchPaginatedResults();
         }
         return $this->_tableGateway->select();
     }
 
+    //Récupère la liste de produits paginés
     public function fetchPaginatedResults(){
         $select = new Select($this->_tableGateway->getTable());
         $resultSetPrototype = new ResultSet();
@@ -41,24 +38,24 @@ class ProductTable {
         return $paginator;
     }
 
-
-
+    //Ajoute un produit à la liste
     public function insert($name,$description,$price){
         $tab=['name' => $name,'description' => $description,'price' => $price];
         $this->_tableGateway->insert($tab);
     }
 
+    //Met à jour un produit
     public function update($id,$name,$description,$price){
-        //todo:vérification des champs
         $tab=['name' => $name,'description' => $description,'price' => $price];
         $this->_tableGateway->update($tab,['id' => $id]);
     }
 
+    //Supprime un produit
     public function delete($id){
         $this->_tableGateway->delete(['id' => $id]);
     }
 
-
+    //Renvoie le résultat d'une requete avec un id de produit. Si il n'existe pas, renvoie false
     public function find($id){
         $select=$this->_tableGateway->select(['id' => $id]);
         if(!$select){

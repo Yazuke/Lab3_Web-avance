@@ -15,7 +15,7 @@ use User\Form\LoginForm;
 
 class AuthController extends AbstractActionController
 {
-    // Gestion de l'utilisateur en base de donnée
+    // Gestion de l'utilisateur en base de données
     private $_userManager;
     // Gestionnaire d'authentification
     private $_authManager;

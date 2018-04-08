@@ -10,6 +10,7 @@ class PrivilegeTable {
         $this->_tableGateway = $tableGateway;
     }
 
+    //Récupère tous les privileges
     public function fetchAll() {
         $resultSet = $this->_tableGateway->select();
         $return = array();
@@ -18,6 +19,7 @@ class PrivilegeTable {
         return $return;
     }
 
+    //Renvoie la requete pour un id
     public function findById($id){
         return $this->_tableGateway->select(['id' => $id])->current();
     }

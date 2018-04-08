@@ -4,7 +4,6 @@
 <main>
 
     <?php
-        echo $this->nb;
          if($this->result){
             $achatStatut="Transaction réussie";
         }else{
@@ -12,7 +11,7 @@
         }
 
         echo "</br>";
-
+        //Génére numéro de transaction
         $achatTransaction = substr(str_shuffle(str_repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5)), 0, 5).rand(1000000000,9999999999);
 
         echo "<div class='in row' style='display:block;text-align:center;width:100%;'>";

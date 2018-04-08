@@ -36,7 +36,6 @@ class ProfilController extends AbstractActionController
         //Récupère pseudo de l'utilisateur connecté
         $username=$this->userManager->findByMail($this->authService->getIdentity())->_username;
 
-
         return new ViewModel([
             'mail'=>$mail,
             'username'=>$username,
@@ -59,7 +58,7 @@ class ProfilController extends AbstractActionController
         //Demande une maj du mail à UserManager
         $this->userManager->changerMail($ancienMail,$nouveauMail);
 
-        //Redirige vers /profil
+        //Déconnexion pour éviter certains problèmes
         return $this->redirect()->toRoute('logout');
 
     }

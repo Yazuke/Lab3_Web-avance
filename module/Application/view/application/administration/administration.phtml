@@ -27,31 +27,34 @@
     </div>
     <br>
     <hr>
+    <!-- Affiche un élément produit -->
     <?php
-        foreach ($products as $p) :
+    foreach ($products as $p) :
 
+        //Infos produit
+        echo '<div class="produitPanier row">';
+        echo '<div class="col-lg-2 col-md-2 col-sm-2 col-2">';
+        echo '<a href="'.$this->basePath().'/produits/'.$this->escapeHtml($p->_id).'"><img class="imageListe" src="http://jhaegman.com/stool.svg"></a>';
+        echo '</div>';
+        echo '<div class="col-lg-3 offset-lg-1 col-md-4 offset-md-2 col-sm-4 offset-sm-2 col-4 offset-3">';
+        echo '<a href="'.$this->basePath().'/produits/'.$this->escapeHtml($p->_id).'">'.$this->escapeHtml($p->_name).'</a>';
+        echo '<p class="produitDescParagraphe">'.$this->escapeHtml($p->_description).'</p>';
+        echo '</div>';
+        echo '<div class="col-lg-2 offset-lg-4 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+        echo '<span class="produitDescPrix">'.$this->escapeHtml($p->_price).'$CAN'.'</span><br></div>';
 
-            echo '<div class="produitPanier row">';
-            echo '<div class="col-lg-2 col-md-2 col-sm-2 col-2">';
-            echo '<a href="'.$this->basePath().'/produits/'.$this->escapeHtml($p->_id).'"><img class="imageListe" src="http://jhaegman.com/stool.svg"></a>';
+        //Bouton d'édition
+        //Le bouton d'édition rempli le formulaire avec des données envoyées via onclick(parametres)
+        echo '<div class="col-lg-1 offset-lg-3 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+        echo '<a href="#formEdition" onclick="fillEdit('.$this->escapeHtml($p->_id).',\''.$this->escapeHtml($p->_name).'\',\''.$this->escapeHtml($p->_description).'\','.$this->escapeHtml($p->_price).')">Editer</a><br></div>';
 
-            echo '</div>';
-            echo '<div class="col-lg-3 offset-lg-1 col-md-4 offset-md-2 col-sm-4 offset-sm-2 col-4 offset-3">';
-            echo '<a href="'.$this->basePath().'/produits/'.$this->escapeHtml($p->_id).'">'.$this->escapeHtml($p->_name).'</a>';
-            echo '<p class="produitDescParagraphe">'.$this->escapeHtml($p->_description).'</p>';
-            echo '</div>';
-            echo '<div class="col-lg-2 offset-lg-4 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
-            echo '<span class="produitDescPrix">'.$this->escapeHtml($p->_price).'$CAN'.'</span><br></div>';
+        //Bouton de suppression
+        echo '<div class="col-lg-2 offset-lg-2 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
+        echo '<a href="'.$this->basePath().'/administration/suppression/'.$this->escapeHtml($p->_id).'">Supprimer des produits</a><br></div>';
 
-            echo '<div class="col-lg-1 offset-lg-3 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
-            echo '<a href="#formEdition" onclick="fillEdit('.$this->escapeHtml($p->_id).',\''.$this->escapeHtml($p->_name).'\',\''.$this->escapeHtml($p->_description).'\','.$this->escapeHtml($p->_price).')">Editer</a><br></div>';
+        echo '<br><br></div><hr>';
 
-            echo '<div class="col-lg-2 offset-lg-2 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-3">';
-            echo '<a href="'.$this->basePath().'/administration/suppression/'.$this->escapeHtml($p->_id).'">Supprimer des produits</a><br></div>';
-
-            echo '<br><br></div><hr>';
-
-        endforeach;
+    endforeach;
 
     ?>
 
@@ -62,12 +65,11 @@
 <script>
     //Rempli le formulaire grace à la fonction appellée au clic sur l'édition
     function fillEdit(id,name,description,price){
-        console.log("hey");
         document.getElementById("formEditionId").value =id;
         document.getElementById("formEditionName").value =name;
         document.getElementById("formEditionDescription").value =description;
         document.getElementById("formEditionPrice").value =price;
-
+        //Affiche le formulaire
         document.getElementById("formEdition").classList.remove("hidden");
     }
 </script>
