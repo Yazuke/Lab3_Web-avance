@@ -177,6 +177,9 @@ return [
             Controller\PanierController::class => [
                 ['actions' => ['panier'], 'allow' => '@'],
             ],
+            Controller\AdministrationController::class => [
+                ['actions' => ['ajout','supression','edition'], 'allow' => '@'],
+            ],
         ]
     ],
     'service_manager' => [
